@@ -1,0 +1,6 @@
+aiogram
+requests
+python-dotenv
+openpyxl
+sqlalchemy
+psycopg2-binary
