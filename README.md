@@ -1,12 +1,13 @@
 # CRM Telegram Bot + Web UI
 
-Небольшой проект: Telegram-бот для просмотра/импорта клиентов и простой веб-интерфейс.
+English: A simple CRM Telegram bot to view, import and export clients, with a small web UI and Postgres integration.
 
-Цель репозитория: показать работу с Telegram Bot API, базой данных Postgres и импортом данных — удобно для портфолио/резюме.
+Русский: Простой Telegram-бот для CRM — просмотр, импорт и экспорт клиентов, небольшой веб‑интерфейс и интеграция с Postgres.
+
+Цель репозитория: показать работу с Telegram Bot API, базой данных Postgres и импортом данных.
 
 ## Что в проекте
 - `bot/` — Telegram-бот на `aiogram` (экспорт клиентов, импорт из CSV/XLSX, простая авторизация).
-- `app/` — (сервер) Flask-приложение с выводом клиентов (используется как API для бота).
 - `db_client.py` — утилиты для прямого доступа к Postgres через SQLAlchemy.
 
 ## Подготовка (локально)
@@ -31,7 +32,7 @@ cp .env.example bot/.env
 
 ```bash
 # пример запуска (зависит от web app реализации)
-python app.py
+python bot.py
 
 # в другой консоли
 python bot/bot.py
@@ -39,25 +40,44 @@ python bot/bot.py
 
 ## Docker
 В репозитории есть `Dockerfile` и `docker-compose.yml` для удобного деплоя/демо.
-Запуск:
 
 ```bash
 docker-compose up --build
 ```
 
-## Безопасность
-- Никогда не коммитьте `bot/.env` или другие файлы с секретами.
-- Если вы уже случайно добавили токены в git — удалите их и очистите историю (BFG, git filter-repo).
+## The purpose of the repository is to demonstrate how to work with the Telegram Bot API, the Postgres database, and data import.
 
-## Что добавить для production (рекомендации)
-- Перенести секреты в менеджер секретов (Vault, cloud secrets).
-- Настроить webhook + HTTPS (nginx + Let's Encrypt) или развернуть на VPS.
-- Настроить миграции (Alembic), бэкапы, мониторинг (Sentry, Prometheus) и CI.
+## What's in the project
+- `bot/` - Telegram bot on `aiogram` (export of clients, import from CSV/XLSX, and simple authorization).
+- `db_client.py` - utilities for direct access to Postgres via SQLAlchemy.
 
-## Как показать в резюме
-- Добавьте в репозитоии пример скриншота/видео работы бота (не секретные данные).
-- Опишите архитектуру и свои роли в README.
-- Если есть публичный деплой (heroku, render, VPS) — добавьте ссылку.
+## Preparation (locally)
+1. Clone the repository.
+2. Create a virtual environment and install the dependencies:
 
----
-Автор: ваш проект
+```bash
+python -m venv .venv
+source .venv/bin/activate # Linux/macOS
+.\.venv\Scripts\activate # Windows PowerShell
+pip install -r requirements.txt
+```
+
+3. Create an environment variable file (example `bot/.env`):
+
+```bash
+cp .env.example bot/.env
+# then edit bot/.env, DO NOT add real tokens to the repository
+```
+
+4. Start the web service (if you need it locally) and the bot:
+
+```bash
+# example of starting (depends on the web app implementation)
+python bot.py
+
+# in another console
+python bot/bot.py
+```
+
+## Docker
+The repository has a `Dockerfile` and `docker-compose.yml` for convenient deployment/demo.
