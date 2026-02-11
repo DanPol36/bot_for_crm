@@ -81,4 +81,5 @@ python bot/bot.py
 
 ## Docker
 The repository has a `Dockerfile` and `docker-compose.yml` for convenient deployment/demo.
+```
 docker-compose up --build
